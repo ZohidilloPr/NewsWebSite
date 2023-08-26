@@ -1,0 +1,944 @@
+openapi: 3.0.3
+info:
+  title: Bong.uz API
+  version: 1.0.0
+  description: Yangiliklar sayti uchun sxema
+paths:
+  /uz/main/ads/bottom/:
+    get:
+      operationId: main_ads_bottom_list
+      description: WEB SAYTNI PASTIDA TURADIGAN REKLAMAN
+      tags:
+      - main
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AdsMs'
+          description: ''
+  /uz/main/ads/left/:
+    get:
+      operationId: main_ads_left_list
+      description: WEB SAYTNI YONLARIDA TURADIGAN REKLAMAN
+      tags:
+      - main
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AdsMs'
+          description: ''
+  /uz/main/ads/middle/:
+    get:
+      operationId: main_ads_middle_list
+      description: WEB SAYTNI O'RTASIDA TURADIGAN REKLAMAN
+      tags:
+      - main
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AdsMs'
+          description: ''
+  /uz/main/ads/top/:
+    get:
+      operationId: main_ads_top_list
+      description: WEB SAYTNI ENG YUQORISIDA TURADIGAN REKLAMAN
+      tags:
+      - main
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AdsMs'
+          description: ''
+  /uz/main/category/:
+    get:
+      operationId: main_category_list
+      description: Hamma Category larni olish uchun
+      tags:
+      - main
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CategoryMS'
+          description: ''
+  /uz/main/category/{id}/:
+    get:
+      operationId: main_category_retrieve
+      description: Categorilarni DETAILNI olish uchun
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Bo'limlar.
+        required: true
+      tags:
+      - main
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoryMS'
+          description: ''
+  /uz/main/comment/{news_id}/:
+    get:
+      operationId: main_comment_retrieve
+      description: YANGILIKLARNING COMMENTARIASI UCHUN "ID" BILAN commentlarni olish
+        uchun yangilik (news)ni ID sini jonatish kerak
+      parameters:
+      - in: path
+        name: news_id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - main
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommentMS'
+          description: ''
+    post:
+      operationId: main_comment_create
+      description: YANGILIKLARNING COMMENTARIASI UCHUN "ID" BILAN commentlarni olish
+        uchun yangilik (news)ni ID sini jonatish kerak
+      parameters:
+      - in: path
+        name: news_id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - main
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommentMS'
+          description: ''
+  /uz/main/news/:
+    get:
+      operationId: main_news_list
+      description: HAMMA  YANGILIKLARNI OLISH UCHUN
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - name: page_size
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      tags:
+      - main
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedNewsMSList'
+          description: ''
+  /uz/main/news/30days/:
+    get:
+      operationId: main_news_30days_list
+      description: OXIRGI 30KUNLIK YANGILIKLAR
+      tags:
+      - main
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NewsMS'
+          description: ''
+  /uz/main/news/breaking/:
+    get:
+      operationId: main_news_breaking_list
+      description: '"BREAKING NEWS" BO''LIMI UCHUN 5TA TANLANGAN YANGILIK'
+      tags:
+      - main
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NewsMS'
+          description: ''
+  /uz/main/news/carusel/:
+    get:
+      operationId: main_news_carusel_list
+      description: BOSH SAHIFADAGI CARUSEL UCHUN 5TA ENG SO'NGI YANGILIKLAR
+      tags:
+      - main
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NewsMS'
+          description: ''
+  /uz/main/news/carusel/right/:
+    get:
+      operationId: main_news_carusel_right_list
+      description: BOSH SAHIFADAGI CARUSEL OLDIDAGI BO'LIM UCHUN 4TA UZBEKISTON YANGILIKLARI
+      tags:
+      - main
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NewsMS'
+          description: ''
+  /uz/main/news/choiced/:
+    get:
+      operationId: main_news_choiced_list
+      description: ASOSIY OYNADAGI TANLANGAN CATEGORIALAR UCHUN YANGILIKLAR
+      tags:
+      - main
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MainNewsSerializers'
+          description: ''
+  /uz/main/news/detail/{id}/:
+    get:
+      operationId: main_news_detail_retrieve
+      description: YANGILIKNI DETAILNI OLISH UCHUN "ID" BILAN
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - main
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NewsMS'
+          description: ''
+  /uz/main/news/detail/slug/{slug}/:
+    get:
+      operationId: main_news_detail_slug_retrieve
+      description: YANGILIKNI DETAILNI OLISH UCHUN "SLUG" BILAN
+      parameters:
+      - in: path
+        name: slug
+        schema:
+          type: string
+        required: true
+      tags:
+      - main
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NewsMS'
+          description: ''
+    put:
+      operationId: main_news_detail_slug_update
+      description: YANGILIKNI DETAILNI OLISH UCHUN "SLUG" BILAN
+      parameters:
+      - in: path
+        name: slug
+        schema:
+          type: string
+        required: true
+      tags:
+      - main
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewsMS'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/NewsMS'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/NewsMS'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NewsMS'
+          description: ''
+    patch:
+      operationId: main_news_detail_slug_partial_update
+      description: YANGILIKNI DETAILNI OLISH UCHUN "SLUG" BILAN
+      parameters:
+      - in: path
+        name: slug
+        schema:
+          type: string
+        required: true
+      tags:
+      - main
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedNewsMS'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedNewsMS'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedNewsMS'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NewsMS'
+          description: ''
+    delete:
+      operationId: main_news_detail_slug_destroy
+      description: YANGILIKNI DETAILNI OLISH UCHUN "SLUG" BILAN
+      parameters:
+      - in: path
+        name: slug
+        schema:
+          type: string
+        required: true
+      tags:
+      - main
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '204':
+          description: No response body
+  /uz/main/news/filter/{slug}/:
+    get:
+      operationId: main_news_filter_list
+      description: YANGILIKLARNI CATEGORILARGA QARAB FILTERLAB OLISH UCHUN, 'CATEGORIANI
+        "SLUG"I BILAN'
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - name: page_size
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - in: path
+        name: slug
+        schema:
+          type: string
+        required: true
+      tags:
+      - main
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedNewsMSList'
+          description: ''
+  /uz/main/news/read/:
+    get:
+      operationId: main_news_read_list
+      description: ENG KO'P O'QILGAN 8ta YANGILIKLAR
+      tags:
+      - main
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NewsMS'
+          description: ''
+  /uz/main/news/sevendays/:
+    get:
+      operationId: main_news_sevendays_list
+      description: OXIRGI 7 KUNLIK YANGILIKLAR
+      tags:
+      - main
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NewsMS'
+          description: ''
+  /uz/main/news/today/:
+    get:
+      operationId: main_news_today_list
+      description: BUGUNGI YANGILIKLAR
+      tags:
+      - main
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NewsMS'
+          description: ''
+  /uz/main/news/write/:
+    get:
+      operationId: main_news_write_list
+      description: ENG KO'P KOMMENT YOZILGAN YANGILIKLAR
+      tags:
+      - main
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NewsMS'
+          description: ''
+components:
+  schemas:
+    AdsMs:
+      type: object
+      description: REKLAMALAR
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        pk:
+          type: integer
+          readOnly: true
+          title: ID
+        ads_video:
+          type: string
+          format: uri
+          nullable: true
+          title: Video fayl
+          description: Videoli reklama uchun
+        ads_image:
+          type: string
+          format: uri
+          nullable: true
+          title: Rasm
+          description: Rasmli fayl uchun
+        note:
+          type: string
+          title: Eslatma
+          description: Ozingiz uchun eslatma yozing reklama xaqida
+          maxLength: 777
+        status:
+          nullable: true
+          title: Reklama statusi
+          description: |-
+            Published = Reklamani ko'rsatish, Pendding = Reklamani Ushlab turish
+
+            * `pub` - Published
+            * `pen` - Pendding
+          oneOf:
+          - $ref: '#/components/schemas/StatusEnum'
+          - $ref: '#/components/schemas/BlankEnum'
+          - $ref: '#/components/schemas/NullEnum'
+        location:
+          nullable: true
+          title: Reklamani ko'rinish joyi
+          description: |-
+            Tanlash shart*
+
+            * `top` - Yuqori
+            * `middle` - o'rta
+            * `left` - Yon tomon
+            * `bottom` - Pastki
+          oneOf:
+          - $ref: '#/components/schemas/LocationEnum'
+          - $ref: '#/components/schemas/BlankEnum'
+          - $ref: '#/components/schemas/NullEnum'
+        link:
+          type: string
+          format: uri
+          nullable: true
+          description: Web site yoki ijtimoi tarmoq linki
+          maxLength: 200
+        add_time:
+          type: string
+          format: date-time
+          readOnly: true
+        update_time:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - add_time
+      - id
+      - note
+      - pk
+      - update_time
+    BlankEnum:
+      enum:
+      - ''
+    CategoryMS:
+      type: object
+      description: Newsni categorilari uchun
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          nullable: true
+          title: Categoriyalar
+          description: Sport, Biznes, Dunyo ...vhk
+          maxLength: 250
+        name_uz:
+          type: string
+          nullable: true
+          title: Categoriyalar [uz]
+          description: Sport, Biznes, Dunyo ...vhk
+          maxLength: 250
+        name_en:
+          type: string
+          nullable: true
+          title: Categoriyalar [en]
+          description: Sport, Biznes, Dunyo ...vhk
+          maxLength: 250
+        name_ru:
+          type: string
+          nullable: true
+          title: Categoriyalar [ru]
+          description: Sport, Biznes, Dunyo ...vhk
+          maxLength: 250
+        name_uz_Cyrl:
+          type: string
+          nullable: true
+          title: Categoriyalar [uz-Cyrl]
+          description: Sport, Biznes, Dunyo ...vhk
+          maxLength: 250
+        order_num:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          title: Tartib raqami
+        slug:
+          type: string
+          nullable: true
+          description: Bu automatik to'ldiriladi
+          maxLength: 50
+          pattern: ^[-a-zA-Z0-9_]+$
+        add_time:
+          type: string
+          format: date-time
+          readOnly: true
+        author:
+          type: integer
+          nullable: true
+      required:
+      - add_time
+      - id
+    CommentMS:
+      type: object
+      description: Izoh yozish
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        pk:
+          type: integer
+          readOnly: true
+          title: ID
+        f_name:
+          type: string
+          nullable: true
+          maxLength: 250
+        comment:
+          type: string
+          nullable: true
+        add_time:
+          type: string
+          format: date-time
+          readOnly: true
+        news:
+          type: integer
+          nullable: true
+      required:
+      - add_time
+      - id
+      - pk
+    LocationEnum:
+      enum:
+      - top
+      - middle
+      - left
+      - bottom
+      type: string
+      description: |-
+        * `top` - Yuqori
+        * `middle` - o'rta
+        * `left` - Yon tomon
+        * `bottom` - Pastki
+    MainNewsSerializers:
+      type: object
+      description: ASOSIY WEB SAHIFADA KO'RINADIGAN YANGILIKLAR
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        pk:
+          type: integer
+          readOnly: true
+          title: ID
+        category:
+          type: integer
+          nullable: true
+          title: Bo'lim nomi
+        posts:
+          type: array
+          items:
+            $ref: '#/components/schemas/NewsMS'
+      required:
+      - id
+      - pk
+      - posts
+    NewsMS:
+      type: object
+      description: Yangiliklar uchun JSON data chiqarish
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        pk:
+          type: integer
+          readOnly: true
+          title: ID
+        slug:
+          type: string
+          nullable: true
+          maxLength: 50
+          pattern: ^[-a-zA-Z0-9_]+$
+        title:
+          type: string
+          nullable: true
+          title: Yangilik sarlovhasi
+          description: Matn uchunligi 700ta belgidan oshmasligi kerak
+          maxLength: 700
+        subtitle:
+          type: string
+          nullable: true
+          title: Yangilikning qisqacha mazmuni
+          description: Matn uzunligi 1500ta so'zdan oshmasligi kerak
+          maxLength: 1500
+        post:
+          type: string
+          nullable: true
+        html:
+          type: string
+          format: date-time
+          readOnly: true
+        post_img:
+          type: string
+          format: uri
+          nullable: true
+          title: Asosiy rasm
+          description: Rasmli fayllar uchun
+        post_video:
+          type: string
+          format: uri
+          nullable: true
+          title: Video
+          description: Video faylar uchun
+        post_file:
+          type: string
+          format: uri
+          nullable: true
+          title: PDF faylar uchun
+        comment_on_off:
+          type: boolean
+          title: Izoh
+          description: Izohlarni ko'rsatish yoki o'chirib qo'yish
+        favorite:
+          type: boolean
+          title: Mualif tanlovi
+        status:
+          $ref: '#/components/schemas/StatusEnum'
+        breaking_news:
+          type: boolean
+          title: Teskor yangilik
+        post_view:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          title: Yangilikni ko'rishlar soni
+        comment_count:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          description: Tegilmasin
+        author_news:
+          type: string
+          nullable: true
+          maxLength: 200
+        add_time:
+          type: string
+          format: date-time
+          nullable: true
+          title: Yangilik sanasi
+        update_time:
+          type: string
+          format: date-time
+          readOnly: true
+        category:
+          type: array
+          items:
+            type: string
+      required:
+      - category
+      - html
+      - id
+      - pk
+      - update_time
+    NullEnum:
+      enum:
+      - null
+    PaginatedNewsMSList:
+      type: object
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/NewsMS'
+    PatchedNewsMS:
+      type: object
+      description: Yangiliklar uchun JSON data chiqarish
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        pk:
+          type: integer
+          readOnly: true
+          title: ID
+        slug:
+          type: string
+          nullable: true
+          maxLength: 50
+          pattern: ^[-a-zA-Z0-9_]+$
+        title:
+          type: string
+          nullable: true
+          title: Yangilik sarlovhasi
+          description: Matn uchunligi 700ta belgidan oshmasligi kerak
+          maxLength: 700
+        subtitle:
+          type: string
+          nullable: true
+          title: Yangilikning qisqacha mazmuni
+          description: Matn uzunligi 1500ta so'zdan oshmasligi kerak
+          maxLength: 1500
+        post:
+          type: string
+          nullable: true
+        html:
+          type: string
+          format: date-time
+          readOnly: true
+        post_img:
+          type: string
+          format: uri
+          nullable: true
+          title: Asosiy rasm
+          description: Rasmli fayllar uchun
+        post_video:
+          type: string
+          format: uri
+          nullable: true
+          title: Video
+          description: Video faylar uchun
+        post_file:
+          type: string
+          format: uri
+          nullable: true
+          title: PDF faylar uchun
+        comment_on_off:
+          type: boolean
+          title: Izoh
+          description: Izohlarni ko'rsatish yoki o'chirib qo'yish
+        favorite:
+          type: boolean
+          title: Mualif tanlovi
+        status:
+          $ref: '#/components/schemas/StatusEnum'
+        breaking_news:
+          type: boolean
+          title: Teskor yangilik
+        post_view:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          title: Yangilikni ko'rishlar soni
+        comment_count:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          description: Tegilmasin
+        author_news:
+          type: string
+          nullable: true
+          maxLength: 200
+        add_time:
+          type: string
+          format: date-time
+          nullable: true
+          title: Yangilik sanasi
+        update_time:
+          type: string
+          format: date-time
+          readOnly: true
+        category:
+          type: array
+          items:
+            type: string
+    StatusEnum:
+      enum:
+      - pub
+      - pen
+      type: string
+      description: |-
+        * `pub` - Published
+        * `pen` - Pendding
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid

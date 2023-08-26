@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+{% load static %}
+{% load i18n %}
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+          
+        {% endblock title %}
+    </title>
+    <meta content="Yangiliklar uz" name="keywords">
+    <meta content="Yangiliklar uz" name="description">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Favicon -->
+    <link href="{{ web_site_favilcon.url }}" rel="icon">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">  
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    
+    <!-- Custom css file -->
+    <link rel="stylesheet" href="{% static 'css/c_style.css' %}">
+
+    <!-- Animation aos css -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- slick js CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        body{
+            line-height: 1;
+        }
+        .last_news{
+            height: 300px;
+        }
+        @media screen and (min-width: 481px) {
+            .last_news{
+                height: 300px;
+            }    
+        }
+        @media screen and (max-width: 768px) {
+            .last_news{
+                height: 350px;
+            }    
+        }
+        .lang{
+            padding: 3px;
+        }
+        .language_code{
+            border: none;
+            color: #aaa;
+            background: none;
+        }
+        .language_code option{
+            font-size: 14px;
+            background-color: #333;
+        }
+        .refresh{
+            color: #aaa;
+            border: none;
+            outline: none;
+            background: none;
+        }
+        :root{
+            --primary: {{ theme }};
+        }
+        .owl-dots .active{
+            background-color: var(--primary) !important;
+        }
+        .btn-primary{
+            color: #f8fcfe !important;
+            background-color: var(--primary) !important;
+        }
+        .owl-prev:hover, .owl-next:hover{
+            color: #f8fcfe !important;
+            background-color: var(--primary) !important;
+        }
+        .nav-link{
+            color: #f8fcfe !important;    
+        }
+        .nav-link:hover{
+            background-color: var(--primary) !important;
+        }
+        .dropdown-item:hover, .dropdown-item:focus{
+            color: #f8fcfe;
+            background-color: var(--primary) !important;
+        }
+        .active .page-link{
+            color: #f8fcfe;
+            background-color: var(--primary) !important;
+        }
+        .brand_name{
+            color: var(--primary);
+        }
+        .page-link{
+            color: #333;
+        }
+        .text-primary{
+            color: #333 !important;
+        }
+        .navbar .active{
+            color: #f8fcfe !important;
+            background-color: var(--primary) !important;
+        }
+        .badge-primary, .bg-primary{
+            color: #f8fcfe !important;
+            background-color: var(--primary) !important;
+        }
+        #search_btn:hover{
+            background-color: var(--primary) !important;
+        }
+        .badge-primary:hover{
+            color: #ebf5f4 !important;
+            background-color: var(--primary) !important;
+        }
+        .socials_footer li{
+            margin-right: 10px;
+            display: inline-block;
+            list-style-type: none;
+        }
+        .socials_footer li a{
+            color: #aaa;
+            font-size: 18px;
+        }
+        .socials_footer li a:hover{
+            color: var(--primary);
+        }
+        .section-title{
+            border-left: 5px solid var(--primary);
+        }
+        .footer_mode{
+            border-top: 4px solid var(--primary);
+        }
+        .footer_mode a{
+            color: var(--primary);
+        }
+        .border_c{
+            border: 1px solid var(--primary);
+        }
+        .bg_btn{
+            border: none;
+            outline: none;
+            color: #f8fcfe;
+            font-weight: 600;
+            padding: 8px 28px;
+            background-color: var(--primary);
+        }
+        .category_btn{
+            padding: 5px 8px;
+            margin-bottom: 3px;
+            display: inline-block;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+        .category_btn:hover{
+            color: white;
+            transition: 0.4s;
+            text-decoration: none;
+            background-color: var(--primary);
+        }
+        .web_site{
+            text-align: center;
+        }
+        .web_email{
+            text-align: center;
+        }
+        @media only screen and (min-width : 1224px) {
+            .web_site{
+                text-align: left;
+                padding-left: 120px;
+            }
+            .web_email{
+                padding-right: 120px;
+            }
+        }
+        .frame_ads{
+            width: 80%;
+            float: right;
+            min-height: 100px;
+            max-height: 100px;
+        }
+        .frame_ads a .ads_img{
+            padding: 50px;
+            object-fit: cover;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body>
+    {% include 'messages.html' %}
+    <!-- Topbar Start -->
+    <div class="container-fluid d-none d-lg-block">
+        <div class="row sticky-top align-items-center bg-dark px-lg-5" data-aos="flip-up" data-aos-delay="400">
+            <div class="col-lg-9">
+                <nav class="navbar  navbar-expand-sm bg-dark p-0 ">
+                    <ul class="navbar-nav ml-n2">
+                        <li class="nav-item border-right border-secondary">
+                            <a class="nav-link text-body small" href="{% url 'filter_by_date' date=today|date:'Y-m-d'%}">{{ today }}</a>
+                        </li>
+                        <li class="nav-item border-right border-secondary">
+                            <a class="nav-link text-body small" href="{% url 'contact_us' %}"> {% blocktrans %} Aloqa uchun {% endblocktrans %}  </a>
+                        </li>                        
+                        <li class="nav-item border-right border-secondary">
+                            <form action="{% url 'set_language' %}" onchange="submitForm()" class="lang" method="post" id="lang">{% csrf_token %}
+                                <input name="next" type="hidden" value="{{ redirect_to }}">
+                                <select name="language" class="language_code">
+                                    {% get_current_language as LANGUAGE_CODE %}
+                                    {% get_available_languages as LANGUAGES %}
+                                    {% get_language_info_list for LANGUAGES as languages %}
+                                    {% for language in languages %}
+                                        <option class="text-warning" value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected {% endif %}>
+                                            {{ language.code }}
+                                        </option>
+                                    {% endfor %}
+                                </select> 
+                            </form>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-lg-3 text-right d-none d-md-block">
+                <nav class="navbar navbar-expand-sm bg-dark p-0">
+                    <ul class="navbar-nav ml-auto mr-n2">
+                        {% for s in socials %}    
+                            <li class="nav-item" data-aos="fade-right" data-aos-delay="50"> 
+                                <a class="nav-link text-body" target="_blank" href="{% if s.url != None %}{{ s.url }}{% endif %}"><small class="{{ s.icon }}"></small></a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="row align-items-center bg-white py-3 px-lg-5" data-aos="flip-up">
+            <div class="col-lg-4">
+                <a href="{% url 'home' %}" class="navbar-brand p-2 d-none d-lg-block">
+                    <img src="{{ web_site_logo.url }}" width="200" alt="">
+                    {% comment %} <h1 class="m-0 text-uppercase text-primary">{{ web_site_name }}.<span class="text-secondary font-weight-normal">Uz</span></h1> {% endcomment %}
+                </a>
+            </div>
+            <div class="col-lg-8 text-center text-lg-right">
+                <div id="ads_top">
+                    {% for a in ads_top %}                
+                        <div class="frame_ads">
+                            <a href="{{ a.link }}">
+                                <div class="ads_img" style="background-image: url('{{ a.ads_image.url }}');">
+                                    
+                                </div>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Topbar End -->
+
+    <!-- Navbar Start -->
+    <div class="container-fluid sticky-top p-0">
+        <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-2 py-lg-0 px-lg-5"> 
+            <a href="{% url 'home' %}" class="navbar-brand d-block d-lg-none">
+                <h1 class="m-0 display-4 text-uppercase brand_name">{{ web_site_name }}<span class="text-white font-weight-normal">Uz</span></h1>
+            </a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between px-0 px-lg-3" id="navbarCollapse">
+                <div class="navbar-nav mr-auto py-0">
+                    <a href="{% url 'home' %}" class="nav-item nav-link" id="main_nav">{% blocktrans %}Bosh sahifa{% endblocktrans %}</a>
+                    <div class="nav-item dropdown" id="category_nav">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{% blocktrans %}Bo'limlar{% endblocktrans %}</a>
+                        <div class="dropdown-menu rounded-0 m-0">
+                            {% for c in Categories %}
+                                <a href="{% url 'filter_by_category' id=c.id %}" class="dropdown-item">{{ c.name }}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <a href="{% url 'contact_us' %}" class="nav-item nav-link" id="contact_nav">{% blocktrans %}Aloqa{% endblocktrans %}</a>
+                    <a href="{% url 'news_list_view' %}" class="nav-item nav-link" id="news_nav">{% blocktrans %}Barcha Yangiliklar{% endblocktrans %}</a>
+                </div>
+                <form action="{% url 'search_engine' %}" method="get">
+                    <div class="input-group ml-auto d-none d-lg-flex" data-aos="fade-left" data-aos-delay="600" style="width: 100%; max-width: 300px;">
+                        <input type="search" name="q" class="form-control border-0" placeholder="{% blocktrans %}Yangiliklarni qidirish{% endblocktrans %}....">
+                        <div class="input-group-append">
+                            <button class="input-group-text bg-primary text-dark border-0 px-3" id="search_btn">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </nav>
+    </div>
+    <!-- Navbar End -->
+    
+    {% block content %}
+      
+    {% endblock content %}
+
+    <div class="container-fluid py-4 px-sm-3 px-md-5 footer_mode" style="background: #fff;" >
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+                <p class="m-0 web_site"><a href="#">{{ web_site_name }}.uz</a> &copy; {% if today|date:"Y" != "2023" %}2023-{{ today|date:"Y" }}{% else %}{{ today|date:"Y" }}{% endif %}</p>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+                        <ul class="socials_footer text-center">
+                            {% for s in socials %}    
+                                <li class="">
+                                    <a class="" href="{% if s.url != None %}{{ s.url }}{% endif %}"><small class="{{ s.icon }}"></small></a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 web_email">
+                        <a href="mailto:{{ admin_email }}">{{ admin_email }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>		
+    </div>
+    <!-- Footer End -->
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-primary btn-square back-to-top border_c"><i class="fa fa-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'lib/easing/easing.min.js' %}"></script>
+    
+    <!-- OWL CARUSEL -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Template Javascript -->
+    <script src="{% static 'js/main.js' %}"></script>
+
+    <!-- ANIMATION EFFECT JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- SLICK JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <!-- Script --> 
+    <script type='text/javascript'> 
+        function submitForm(){
+            document.getElementById('lang').submit(); 
+        } 
+        AOS.init();
+        $("#ads_top").slick();
+        $(document).ready(function(){
+            var location = window.location.pathname.toString()
+            if (location.includes("category")) {
+                $("#category_nav").addClass("active")
+            } else if (location.includes("contact")){
+                $("#contact_nav").addClass("active")
+            } else if (location.includes("news")){
+                $("#news_nav").addClass("active")
+            } else {
+                $("#main_nav").addClass("active")
+            }
+        })
+    </script>
+</body>
+</html>

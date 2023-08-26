@@ -1,0 +1,363 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-05-01 17:16+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#: .\config\settings.py:152
+msgid "Uzbek"
+msgstr ""
+
+#: .\config\settings.py:153
+msgid "English"
+msgstr ""
+
+#: .\config\settings.py:154
+msgid "Russian"
+msgstr ""
+
+#: .\config\settings.py:155
+msgid "Kiril"
+msgstr ""
+
+#: .\main\custom_context_processor.py:40 .\main\models.py:46
+#: .\templates\single.html:49
+msgid "Izoh"
+msgstr "Comment"
+
+#: .\main\custom_context_processor.py:42
+msgid "Ortga"
+msgstr "Preview"
+
+#: .\main\custom_context_processor.py:43
+msgid "Keyingisi"
+msgstr "Next"
+
+#: .\main\custom_context_processor.py:44
+msgid "Yuborish"
+msgstr "Send"
+
+#: .\main\custom_context_processor.py:45 .\main\models.py:21
+#: .\main\models.py:22 .\templates\base.html:156
+msgid "Bo'limlar"
+msgstr "Categories"
+
+#: .\main\custom_context_processor.py:46
+msgid "Obuna bo'ling"
+msgstr "Subscribe"
+
+#: .\main\custom_context_processor.py:47
+msgid "Bizni kuzating"
+msgstr "Follow me"
+
+#: .\main\custom_context_processor.py:48
+msgid "Izoh qoldirish"
+msgstr "Write Comment"
+
+#: .\main\custom_context_processor.py:49
+msgid "Obuna bo'lish"
+msgstr "Subscribe"
+
+#: .\main\custom_context_processor.py:50
+msgid "To'liq ismingizni kiriting"
+msgstr "Full Name"
+
+#: .\main\custom_context_processor.py:51
+msgid "Eng ko'p ko'rilgan yangiliklar"
+msgstr "Most Viewed News"
+
+#: .\main\custom_context_processor.py:52
+msgid "Eng ko'p muhokama qilingan yangiliklar"
+msgstr "The most discussed news"
+
+#: .\main\custom_context_processor.py:53
+msgid ""
+"Eng so'ngi yangiliklardan xabardor bo'ish uchun obuna bo'lishni unutmang."
+msgstr "Don't forget to subscribe to get the latest news."
+
+#: .\main\models.py:13
+msgid "Categoriyalar"
+msgstr "Catigories"
+
+#: .\main\models.py:13
+msgid "Sport, Biznes, Dunyo ...vhk"
+msgstr "The Sports, Business, The World and other"
+
+#: .\main\models.py:14
+msgid "Tartib raqami"
+msgstr "Ordinal number"
+
+#: .\main\models.py:15
+msgid "Bu automatik to'ldiriladi"
+msgstr "This is auto-filled"
+
+#: .\main\models.py:35
+msgid "Yangilik sarlovhasi"
+msgstr "News Title"
+
+#: .\main\models.py:35
+msgid "Matn uchunligi 700ta belgidan oshmasligi kerak"
+msgstr "The length of the text should not exceed 700 characters"
+
+#: .\main\models.py:36
+msgid "Yangilikning qisqacha mazmuni"
+msgstr "Summary of the news"
+
+#: .\main\models.py:36
+msgid "Matn uzunligi 1500ta so'zdan oshmasligi kerak"
+msgstr "The length of the text should not exceed 1500 characters"
+
+#: .\main\models.py:39
+msgid "Asosiy rasm"
+msgstr "Main Photo"
+
+#: .\main\models.py:39
+msgid "Rasmli fayllar uchun"
+msgstr "For image files"
+
+#: .\main\models.py:40
+msgid "PDF faylar uchun"
+msgstr "For PDF files"
+
+#: .\main\models.py:41
+msgid "Video"
+msgstr "Video"
+
+#: .\main\models.py:41
+msgid "Video faylar uchun"
+msgstr "For Video Files"
+
+#: .\main\models.py:44
+msgid "Mualif tanlovi"
+msgstr "Author's choice"
+
+#: .\main\models.py:45
+msgid "Teskor yangilik"
+msgstr "Breaking News"
+
+#: .\main\models.py:46
+msgid "Izohlarni ko'rsatish yoki o'chirib qo'yish"
+msgstr "Comment off/on"
+
+#: .\main\models.py:48
+msgid "Tegilmasin"
+msgstr "Don't touch it."
+
+#: .\main\models.py:49
+msgid "Yangilikni ko'rishlar soni"
+msgstr "News viewed number"
+
+#: .\main\models.py:52
+msgid "Yangilik sanasi"
+msgstr "Date of news"
+
+#: .\main\models.py:58 .\main\models.py:59 .\main\models.py:89
+msgid "Yangiliklar"
+msgstr "News"
+
+#: .\main\models.py:88
+msgid "Bo'lim nomi"
+msgstr "Categories Name"
+
+#: .\main\models.py:89
+msgid "Web saytda ko'rinishi kerak Bo'lgan yangiliklarni tanlang"
+msgstr "Select the news that should appear on the website"
+
+#: .\main\models.py:90
+msgid "Tartib raqam"
+msgstr "Ordinal number"
+
+#: .\main\models.py:102 .\main\models.py:103
+msgid "Asosiy Yangiliklar"
+msgstr "Main News"
+
+#: .\main\models.py:114
+msgid "Eslatma"
+msgstr "Note"
+
+#: .\main\models.py:114
+msgid "Ozingiz uchun eslatma yozing reklama xaqida"
+msgstr "Write a note for yourself about advertising"
+
+#: .\main\models.py:115
+msgid "Video fayl"
+msgstr "Video File"
+
+#: .\main\models.py:115
+msgid "Videoli reklama uchun"
+msgstr "For video advertising"
+
+#: .\main\models.py:116
+msgid "Rasm"
+msgstr "Foto"
+
+#: .\main\models.py:116
+msgid "Rasmli fayl uchun"
+msgstr "For Image files"
+
+#: .\main\models.py:117
+msgid "Reklama statusi"
+msgstr "Ads status"
+
+#: .\main\models.py:117
+msgid "Published = Reklamani ko'rsatish, Pendding = Reklamani Ushlab turish"
+msgstr ""
+
+#: .\main\models.py:118
+msgid "Reklamani ko'rinish joyi"
+msgstr "Ad placement"
+
+#: .\main\models.py:118
+msgid "Tanlash shart*"
+msgstr "Choice is required"
+
+#: .\main\models.py:119
+msgid "Web site yoki ijtimoi tarmoq linki"
+msgstr "Web site or social network link"
+
+#: .\main\models.py:129 .\main\models.py:130
+msgid "Reklama"
+msgstr "Advertising"
+
+#: .\main\models.py:137
+msgid "F.I.SH"
+msgstr "F.M.L"
+
+#: .\main\models.py:138
+msgid "Akmal Akmalov Akmalivich"
+msgstr ""
+
+#: .\main\models.py:140 .\main\models.py:141
+msgid "F.I.SH ni kiritishingiz kerak."
+msgstr "You must enter F.M.L"
+
+#: .\main\models.py:145 .\main\views.py:312
+msgid "E-Pochta"
+msgstr "Email"
+
+#: .\main\models.py:146
+msgid "E-Pochta: admin@gmail.com"
+msgstr "Email: admin@gmail.com"
+
+#: .\main\models.py:148
+msgid ""
+"Siz notog'ri pochta kiritingiz, \n"
+" Misol uchun: admin@example.com"
+msgstr "You entered an invalid email address, For example: admin@example.com"
+
+#: .\main\models.py:149 .\main\models.py:150
+msgid "E-Pochta ni kiritishingiz kerak."
+msgstr "You must enter Email."
+
+#: .\main\models.py:154
+msgid "Xatning qisqacha mazmuni"
+msgstr "Summary of the message"
+
+#: .\main\models.py:156 .\main\models.py:157
+msgid "Mavzuni ni kiritishingiz kerak."
+msgstr "You must enter the subject."
+
+#: .\main\models.py:163 .\main\models.py:164
+msgid "Xat mazmuni kiritishingiz kerak."
+msgstr "You must enter the content of the message."
+
+#: .\main\models.py:166
+msgid "Xat kelgan vaqt"
+msgstr "The time the message arrived"
+
+#: .\main\models.py:167
+msgid "Xat o'qilgan vaqt"
+msgstr "The time the message read"
+
+#: .\main\models.py:176
+msgid "Xat"
+msgstr "Message"
+
+#: .\main\models.py:177
+msgid "Xatlar"
+msgstr "Messages"
+
+#: .\main\views.py:308 .\templates\base.html:163
+msgid "Aloqa"
+msgstr "Contact us"
+
+#: .\main\views.py:309
+msgid "Muallifga savol yollang"
+msgstr "Send message to author"
+
+#: .\main\views.py:310
+msgid "Bizni manzil"
+msgstr "Our address"
+
+#: .\main\views.py:311
+msgid "Toshkent shaxar Yunusobod 12 kv"
+msgstr "Toshkent city Yunusobod 12 kv"
+
+#: .\main\views.py:313
+msgid "webmaster@yangisidan.uz"
+msgstr ""
+
+#: .\main\views.py:314
+msgid "Telefon raqam"
+msgstr "Phone Number"
+
+#: .\main\views.py:315
+msgid "+998 33 000-00-00"
+msgstr ""
+
+#: .\main\views.py:316
+msgid "Jonatish"
+msgstr "Send"
+
+#: .\templates\base.html:91
+msgid " Aloqa uchun "
+msgstr "Contact us"
+
+#: .\templates\base.html:154 .\templates\index.html:5
+msgid "Bosh sahifa"
+msgstr "Home"
+
+#: .\templates\base.html:167
+msgid "Yangiliklarni qidirish"
+msgstr "Searching news"
+
+#: .\templates\index.html:58
+msgid "Teskor yangiliklar"
+msgstr "Breaking news"
+
+#: .\templates\index.html:76
+msgid "Muallif tanlovi"
+msgstr "Author's choice"
+
+#: .\templates\index.html:108
+msgid "Eng songi yangiliklar"
+msgstr "The lastes News"
+
+#: .\templates\index.html:109
+msgid "Hammasi"
+msgstr "All"
+
+#: .\templates\single.html:4
+msgid "Yangilik"
+msgstr "News"
+
+#: .\templates\single.html:20
+msgid "Izohlar"
+msgstr "Comments"
+
+#: .\templates\single.html:33
+msgid "PDF fileni ko'rish"
+msgstr "View PDF file"

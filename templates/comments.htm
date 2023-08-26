@@ -1,0 +1,30 @@
+<!-- Comment Form Start -->
+{% load i18n %}
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<div class="mb-3">
+    <div class="section-title mb-0"> 
+        <h4 class="m-0 text-uppercase font-weight-bold" data-aos="fade-up">{{ w_comment }}</h4>
+    </div>
+    <div class="bg-white border border-top-0 p-4">
+        <form method="post" action="{% url 'comments' %}">
+            {% csrf_token %}
+            <input type="hidden" name="news_id" value="{{ object.id }}">
+            <input type="hidden" name="now_path" value="{{ request.path }}">
+            <div class="form-group" data-aos="fade-up">
+                <label for="f_name">{{ f_i_sh }}</label>
+                <input type="text" name="f_name" class="form-control form-control-sm" id="f_name" aria-describedby="f_name">
+                <small id="f_name" class="form-text text-muted">{{ full_n }}: **Avaz Avazov</small>
+            </div>
+            <div class="form-group" data-aos="fade-up">
+                <label for="comment"></label>
+                <textarea name="comment" id="comment" rows="5" style="max-height: 150px;" class="form-control form-control-sm"></textarea>
+            </div>
+            <div class="form-group">
+                {{ comment_recapcha }}
+            </div>
+            <button data-aos="fade-up" type="submit" class="bg_btn">{{ send_btn }}</button>
+        </form>
+    </div>
+</div>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<!-- Comment Form End -->

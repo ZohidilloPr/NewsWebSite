@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}
+    {{ a_a }}
+{% endblock title %}
+{% block content %}
+    <!-- Contact Start -->
+    <div class="container-fluid mt-5 pt-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="section-title mb-0" data-aos="fade-up">
+                        <h4 class="m-0 text-uppercase font-weight-bold" data-aos="fade-left" data-aos-delay="400">{{ m_s_y }}</h4>
+                    </div>
+                    <div class="bg-white border border-top-0 p-4 mb-3">
+                        <div class="mb-4" data-aos="fade-up">
+                            <div class="mb-3" data-aos="fade-up" data-aos-delay="300">
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="fa fa-map-marker-alt text-primary mr-2"></i>
+                                    <h6 class="font-weight-bold mb-0">{{ b_m }}</h6>
+                                </div>
+                                <p class="m-0">{{ admin_address }}</p>
+                            </div>
+                            <div class="mb-3"  data-aos="fade-up" data-aos-delay="400">
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="fa fa-envelope-open text-primary mr-2"></i>
+                                    <h6 class="font-weight-bold mb-0">{{ e_p }}</h6>
+                                </div>
+                                <p class="m-0">{{ admin_email }}</p>
+                            </div>
+                            <div class="mb-3" data-aos="fade-up" data-aos-delay="500">
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="fa fa-phone-alt text-primary mr-2"></i>
+                                    <h6 class="font-weight-bold mb-0">{{ p_n }}</h6>
+                                </div>
+                                <p class="m-0">{{ admin_phone }}</p>
+                            </div>
+                        </div>
+                        <h6 class="text-uppercase font-weight-bold mb-3"></h6>
+                        <form method="POST">{% csrf_token %}
+                            <input type="hidden" name="now_path" value="{{ request.path }}">
+                            {% for e in form.error_messages %}
+                                {{ e }}
+                            {% endfor %}
+                            {% for f in form %}    
+                                <div class="form-group mb-4" data-aos="fade-up" data-aos-delay="300">
+                                    <label for="id_{{ f.name }}">{{ f.label }}</label>
+                                    {{ f }}
+                                    <small>{{ f.help_text }}</small>
+                                </div>
+                            {% endfor %}
+                            <div class="form-group mb-4">
+                                {{ recapcha }}
+                            </div>
+                            <button type="submit"  data-aos="fade-left" data-aos-delay="350" class="bg_btn">{{ j_t }}</button>
+                        </form>
+                    </div>
+                </div>
+                {% include "left_side_news.htm" %}
+            </div>
+        </div>
+    </div>
+    <!-- Contact End -->  
+{% endblock content %}
+

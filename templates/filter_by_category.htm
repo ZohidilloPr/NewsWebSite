@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}
+    {{ category.name }}
+{% endblock title %}
+{% block content %}
+    <!-- News With Sidebar Start -->
+    <div class="container-fluid mt-5 pt-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="section-title" data-aos="fade-up">
+                                <h4 data-aos="fade-right" data-aos-delay="400" class="m-0 text-uppercase font-weight-bold">{{ category.name }}</h4>
+                            </div>
+                        </div>
+                        {% for obj in object_list %}                            
+                            <div class="col-lg-6" data-aos="fade-up">
+                                <div class="position-relative mb-3">
+                                    <img class="img-fluid w-100 last_news" src="{{ obj.post_img.url }}">
+                                    <div class="bg-white border border-top-0 p-4" style="min-height: 300px;">
+                                        <div class="mb-2">
+                                            <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
+                                                href="{% url 'filter_by_category' id=obj.category.id %}">{{ obj.category.name }}</a>
+                                            <a class="text-body" href="{% url 'filter_by_date' date=obj.add_time|date:'Y-m-d'%}"><small>{{ obj.add_time }}</small></a>
+                                        </div>
+                                        <a class="h4 d-block mb-3 text-secondary text-uppercase font-weight-bold" href="{% url 'detail_news' slug=obj.slug %}">{{ obj.title | truncatechars:30 }}</a>
+                                        <p class="m-0">{{ obj.subtitle | truncatechars:80 }}</p>
+                                    </div>
+                                    <div class="d-flex justify-content-between bg-white border border-top-0 p-4">
+                                        <div class="d-flex align-items-center">
+                                            <small class="ml-3"><i class="far fa-eye mr-2"></i>{{ obj.post_view }}</small>
+                                            <small class="ml-3"><i class="far fa-comment mr-2"></i>{{ obj.comment_count }}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% include "left_side_news.htm" %}
+            </div>
+            <nav aria-label="Barcha yangiliklar uchun pagination">
+                <ul class="pagination">
+                    {% if object_list.has_previous %}  
+                        <li class="page-item"><a class="page-link" href="?page={{ object_list.previous_page_number }}"><i class="fas fa-chevron-left"></i>{{ preview }}</a></li>
+                    {% else %}
+                        <li class="page-item disabled"><a class="page-link" href="#"><i class="fas fa-chevron-left"></i>{{ preview }}</a></li>
+                    {% endif %} 
+                    
+                    {% for i in object_list.paginator.page_range %}
+                        {% if object_list.number == i %}  
+                            <li class="page-item active"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                        {% else %}
+                            <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                        {% endif %}
+                    {% empty %}
+                        <li class="page-item disabled active"><a class="page-link" href="">1</a></li>
+                    {% endfor %}
+                        
+                    {% if object_list.has_next %} 
+                        <li class="page-item"><a class="page-link" href="?page={{ object_list.next_page_number }}">{{ next }} <i class="fas fa-chevron-right"></i> </a></li>
+                    {% else %}
+                        <li class="page-item disabled"><a class="page-link" href="#">{{ next }} <i class="fas fa-chevron-right"></i> </a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <!-- News With Sidebar End -->
+    
+
+{% endblock content %}

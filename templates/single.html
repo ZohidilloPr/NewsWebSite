@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}
+    {% blocktrans %}Yangilik{% endblocktrans %} {{ object.add_time }}
+{% endblock title %}
+{% block content %}
+    <div class="my-5"></div>
+    <!-- News With Sidebar Start -->
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row"> 
+                <div class="col-lg-8">
+                    <!-- News Detail Start -->
+                    <div class="position-relative mb-3"> 
+                        <div class="bg-white border border-top-0 p-4">
+                            <div class="mb-3" data-aos="fade-down" data-aos-delay="400">
+                                <a  class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
+                                    href="{% url 'filter_by_category' id=object.category.id %}">{{ object.category.name }}</a>
+                                <a class="text-body" href="{% url 'filter_by_date' date=object.add_time|date:'Y-m-d'%}">{{ object.add_time }}</a>
+                                <a href="#comments" style="transition: 1s all ease-in;" class="ml-3">{% blocktrans %}Izohlar{% endblocktrans %}</a>
+                            </div>
+                            <h1 class="mb-3 text-secondary text-uppercase font-weight-bold" data-aos="fade-up">{{ object.title }}</h1>
+                            {% if object.post_video %}  
+                                <video controls width="100%" height="40%" data-aos="fade-up" data-aos-delay="300">
+                                    <source src="{{ object.post_video.url }}" type="video/mp4" /> 
+                                </video>
+                            {% endif %}
+                            <br><br>
+                            <p id="news_post" data-aos="fade-up" data-aos-delay="400">
+                                {{ object.post.html | safe }} 
+                            </p>
+                            {% if object.post_file %}  
+                                <a href="{{ object.post_file.url }}" data-aos="flip-up" data-aos-delay="500" class="btn btn-primary" target="_blank">{% blocktrans %}PDF fileni ko'rish{% endblocktrans %}</a>
+                            {% endif %}
+                        </div>
+                        <div class="d-flex justify-content-between bg-white border border-top-0 p-4">
+                            <div class="d-flex align-items-center">
+                                <span class="ml-3"><i class="far fa-eye mr-2"></i>{{ object.post_view }}</span>
+                                <span class="ml-3"><i class="far fa-comment mr-2"></i>{{ object.comment_count }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- News Detail End -->
+
+                    {% if object.comment_on_off == True %}
+                        <!-- Comment List Start -->
+                        <div class="mb-3" id="comments" data-aos="fade-up">
+                            <div class="section-title mb-0">
+                                <h4 class="m-0 text-uppercase font-weight-bold">{{ object.comment_count }} {% blocktrans %}Izoh{% endblocktrans %}</h4>
+                            </div>
+                            <div class="bg-white border border-top-0 p-4">
+                                {% for c in comments %}
+                                    <div class="media mb-4">
+                                        <div class="media-body">
+                                            <h6><a class="text-secondary font-weight-bold" href="">{{ c.f_name }}</a> <small><i>{{ c.add_time }}</i></small></h6>
+                                            <p>{{ c.comment }}</p>
+                                            <!-- <button class="btn btn-sm btn-outline-secondary">Reply</button> -->
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <!-- Comment List End -->
+                    {% endif %}
+
+                    {% include "comments.htm" %}
+
+                </div>
+                {% include "left_side_news.htm" %}
+            </div>
+        </div>
+        <!-- Favarite News Slider Start -->
+        <div class="container-fluid pt-5 mb-5" data-aos="fade-up">
+            <div class="container">
+                <div class="section-title">
+                    <h4 class="m-0 text-uppercase font-weight-bold">{% blocktrans %}Mavzuvga oid yangiliklar{% endblocktrans %}</h4>
+                </div>
+                <div class="owl-carousel news-carousel carousel-item-4 position-relative">
+                    {% for f in category_news %}    
+                        <div class="position-relative overflow-hidden" style="height: 300px;">
+                            <img class="img-fluid h-100" src="{{ f.post_img.url }}" style="object-fit: cover;">
+                            <div class="overlay">
+                                <div class="mb-2">
+                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
+                                        href="{% url 'filter_by_category' id=f.category.id %}">{{ f.category.name }}</a>
+                                    <a class="text-white" href="{% url 'filter_by_date' date=f.add_time|date:'Y-m-d'%}"><small>{{ f.add_time }}</small></a>
+                                </div>
+                                <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="{% url 'detail_news' slug=f.slug %}">
+                                    {{ f.title |truncatechars:40 }}
+                                </a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <!-- Favarite News Slider End -->
+    </div>
+    <!-- News With Sidebar End -->
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-primary btn-square back-to-top"><i class="fa fa-arrow-up"></i></a>
+
+    <script>
+        document.getElementById("news_post").innerHTML = ""
+    </script>
+
+{% endblock content %}

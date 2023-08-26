@@ -1,0 +1,137 @@
+{% load static %}
+{% load i18n %}
+<div class="col-lg-4">
+    <!-- Social Follow Start -->
+    <div class="mb-3">
+        <div class="section-title mb-0">
+            <h4 class="m-0 text-uppercase font-weight-bold">{{ social_n }}</h4>
+        </div>
+        <div class="bg-white border border-top-0 p-3">
+            {% for s in socials %}    
+                <a data-aos="fade-up" target="_blank" href="{% if s.url != None %}{{ s.url }}{% endif %}" class="d-block w-100 text-white text-decoration-none mb-3" id="social_network" data-bgcolor="{{ s.bg_color }}" style="background: {{ s.bg_color }};">
+                    <i class="{{ s.icon }} text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
+                    <span class="font-weight-medium">{{ s.name }}</span>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+    <!-- Social Follow End -->
+
+    <!-- Ads Start -->
+    {% if ads_left %}
+        <div class="mb-3">
+            <div class="section-title mb-0">
+                <h4 class="m-0 text-uppercase font-weight-bold">{{ reklama }}</h4>
+            </div>
+            <div class="bg-white text-center border border-top-0 p-3">
+                <div class="">
+                    <div class="">   
+                        <div class="owl-carousel news-carousel carousel-item-1 position-relative">
+                            {% for a in ads_left %}    
+                                <div class="position-relative overflow-hidden mb-4" data-aos="fade-up" data-aos-delay="500" style="height: 150px;">
+                                    <a href="{{ a.link }}" target="_blank">
+                                        <img class="img-fluid h-100" src="{{ a.ads_image.url }}" style="object-fit: cover;">
+                                    </a>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    <!-- Ads End -->
+
+    <!-- The Most Write Comments News Start -->
+    <div class="mb-3">
+        <div class="section-title mb-0">
+            <h4 data-aos="fade-up" class="m-0 text-uppercase font-weight-bold">{{ t_v_news }}</h4>
+        </div>
+        <div class="bg-white border border-top-0 p-3">
+            {% for t in TheMostViewestdNews %}    
+                <div data-aos="fade-up" class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
+                    <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
+                        <div class="mb-2">
+                            <div class="d-flex justify-content-between">
+                                <div class="d-flex aligin-item-start">
+                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2" href="{% url 'filter_by_category' id=t.category.id %}">{{ t.category.name }}</a>
+                                </div>
+                                <div class="d-flex aligin-item-end">
+                                    <small class="ml-3"><i class="far fa-eye mr-2"></i>{{ t.post_view }}</small>
+                                    <small class="ml-3"><i class="far fa-comment mr-2"></i>{{ t.comment_count }}</small>
+                                </div>
+                            </div>
+                            <a class="text-body" href="{% url 'filter_by_date' date=t.add_time|date:'Y-m-d'%}"><small>{{ t.add_time | date }}</small></a>
+                        </div>
+                        <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="{% url 'detail_news' slug=t.slug %}">{{ t.title | truncatechars:25 }}</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <!-- The Most Write Comments News End -->
+
+    <!-- Newsletter Start -->
+    <!-- <div class="mb-3" data-aos="fade-up">
+        <div class="section-title mb-0">
+            <h4 class="m-0 text-uppercase font-weight-bold">{{ subscribe }}</h4>
+        </div>
+        <div class="bg-white text-center border border-top-0 p-3">
+            <p>{{ subscribe_2 }}</p>
+            <form action="{% url 'subscribe' %}" method="post">
+                <div class="input-group mb-2" style="width: 100%;">
+                    {% csrf_token %}
+                    <input type="email" name="subscribe_email" required class="form-control form-control-lg" placeholder="E-pochta">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary font-weight-bold px-3">{{ subscribe_1 }}</button>
+                    </div>
+                </div>
+            </form>
+            <small></small>
+        </div>
+    </div> -->
+    <!-- Newsletter End -->
+
+    <!-- Tags Start -->
+    <div class="mb-3" data-aos="fade-up">
+        <div class="section-title mb-0">
+            <h4 class="m-0 text-uppercase font-weight-bold">{{ sections_name }}</h4>
+        </div>
+        <div class="bg-white border border-top-0 p-3">
+            <div class="d-flex flex-wrap m-n1">
+                {% for b in Categories %}
+                    <a href="{% url 'filter_by_category' id=b.id %}" class="category_btn m-1">{{ b.name }}</a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <!-- Tags End -->
+    <!-- Popular News Start -->
+    <div class="mb-3">
+        <div class="section-title mb-0">
+            <h4 class="m-0 text-uppercase font-weight-bold" data-aos="fade-up">{{ t_m_news }}</h4>
+        </div>
+        <div class="bg-white border border-top-0 p-3">
+            {% for t in TheMostCommitedNews %}    
+                <div class="d-flex align-items-center bg-white mb-3" data-aos="fade-up" style="height: 110px;">
+                    <!-- <img class="img-fluid w-50" src="{{ t.post_img.url }}" alt=""> -->
+                    <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
+                        <div class="mb-2">
+                            <div class="d-flex justify-content-between">
+                                <div class="d-flex aligin-item-start">
+                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2" href="{% url 'filter_by_category' id=t.category.id %}">{{ t.category.name }}</a>
+                                </div>
+                                <div class="d-flex aligin-item-end">
+                                    <small class="ml-3"><i class="far fa-eye mr-2"></i>{{ t.post_view }}</small>
+                                    <small class="ml-3"><i class="far fa-comment mr-2"></i>{{ t.comment_count }}</small>
+                                </div>
+                            </div><a class="text-body" href="{% url 'filter_by_date' date=t.add_time|date:'Y-m-d'%}"><small>{{ t.add_time | date }}</small></a>
+                        </div>
+                        <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="{% url 'detail_news' slug=t.slug %}">{{ t.title | truncatechars:25 }}</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <!-- Popular News End -->
+</div>
